@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>ChronoX - Stopwatch</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+    </div>
+
+    <main class="app">
+
+        <!-- Header -->
+        <header class="header">
+
+            <div>
+                <p class="small-title">PRECISION TIMEKEEPER</p>
+
+                <h1>
+                    Chrono<span>X</span>
+                </h1>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+
+                <span id="statusText">
+                    READY
+                </span>
+            </div>
+
+        </header>
+
+
+        <!-- Stopwatch -->
+        <section class="stopwatch-card">
+
+            <div class="timer-label">
+                STOPWATCH
+            </div>
+
+
+            <div class="timer" id="display">
+                00:00:00.00
+            </div>
+
+
+            <div class="timer-info">
+
+                <span>HOURS</span>
+                <span>MINUTES</span>
+                <span>SECONDS</span>
+                <span>HUNDREDTHS</span>
+
+            </div>
+
+
+            <!-- Controls -->
+            <div class="controls">
+
+                <button
+                    class="btn primary"
+                    id="startBtn"
+                >
+                    <span>▶</span>
+                    START
+                </button>
+
+
+                <button
+                    class="btn pause"
+                    id="pauseBtn"
+                >
+                    <span>Ⅱ</span>
+                    PAUSE
+                </button>
+
+
+                <button
+                    class="btn lap"
+                    id="lapBtn"
+                >
+                    <span>⚑</span>
+                    LAP
+                </button>
+
+
+                <button
+                    class="btn reset"
+                    id="resetBtn"
+                >
+                    <span>↻</span>
+                    RESET
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Lap History -->
+        <section class="laps-card">
+
+            <div class="laps-header">
+
+                <div>
+
+                    <p class="section-label">
+                        TIME RECORDS
+                    </p>
+
+                    <h2>
+                        Lap History
+                    </h2>
+
+                </div>
+
+
+                <div class="lap-count">
+
+                    <span id="lapCount">
+                        0
+                    </span>
+
+                    LAPS
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="lap-list"
+                id="lapList"
+            >
+
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                >
+
+                    <div class="empty-icon">
+                        ⏱
+                    </div>
+
+                    <p>
+                        No laps recorded yet
+                    </p>
+
+                    <small>
+                        Start the stopwatch and press LAP
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer>
+
+            <p>
+                A SMALL TOOL FOR BIGGER GOALS
+            </p>
+
+            <p>
+                BUILT WITH HTML • CSS • JAVASCRIPT
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
