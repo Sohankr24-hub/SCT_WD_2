@@ -1,1 +1,478 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #08090d;
+    --card: rgba(18, 20, 28, 0.88);
+    --border: rgba(255,255,255,0.08);
+    --text: #ffffff;
+    --muted: #858894;
+    --accent: #ff315a;
+    --accent2: #ff1744;
+    --green: #39e58c;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+
+/* ---------------- BACKGROUND ---------------- */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 49, 90, 0.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 49, 90, 0.08),
+            transparent 30%
+        ),
+        #08090d;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.35;
+}
+
+.orb1 {
+    width: 300px;
+    height: 300px;
+    background: #ff1744;
+    top: -150px;
+    left: -100px;
+}
+
+.orb2 {
+    width: 250px;
+    height: 250px;
+    background: #7c1740;
+    bottom: -100px;
+    right: -80px;
+}
+
+
+/* ---------------- APP ---------------- */
+
+.app {
+    width: min(900px, 92%);
+    margin: auto;
+    padding: 45px 0 25px;
+}
+
+
+/* ---------------- HEADER ---------------- */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.small-title {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+}
+
+.header h1 {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.header h1 span {
+    color: var(--accent);
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.03);
+
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+}
+
+
+/* ---------------- STOPWATCH CARD ---------------- */
+
+.stopwatch-card,
+.laps-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.35);
+
+}
+
+.stopwatch-card {
+    padding: 55px 40px;
+    text-align: center;
+}
+
+.timer-label {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-bottom: 22px;
+}
+
+.timer {
+    font-family: "Space Mono", monospace;
+
+    font-size: clamp(45px, 9vw, 90px);
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    line-height: 1;
+
+    color: white;
+
+    text-shadow:
+        0 0 30px rgba(255,49,90,0.15);
+}
+
+.timer-info {
+    display: flex;
+    justify-content: center;
+    gap: 42px;
+
+    margin-top: 18px;
+
+    color: #555864;
+
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+
+/* ---------------- BUTTONS ---------------- */
+
+.controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 45px;
+}
+
+.btn {
+    min-width: 125px;
+
+    padding: 14px 20px;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.04);
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn span {
+    margin-right: 7px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.08);
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+
+    box-shadow:
+        0 8px 25px rgba(255,49,90,0.25);
+}
+
+.primary:hover {
+    background: var(--accent2);
+}
+
+.pause {
+    color: #ffd7df;
+}
+
+.lap {
+    color: #ffffff;
+}
+
+.reset {
+    color: #ff8199;
+}
+
+
+/* ---------------- LAPS ---------------- */
+
+.laps-card {
+    margin-top: 20px;
+    padding: 28px;
+}
+
+.laps-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.section-label {
+    color: var(--accent);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 5px;
+}
+
+.laps-header h2 {
+    font-size: 21px;
+}
+
+.lap-count {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.lap-count span {
+    color: white;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+
+/* ---------------- LAP LIST ---------------- */
+
+.lap-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.lap-row {
+    display: grid;
+
+    grid-template-columns: 70px 1fr 1fr;
+
+    align-items: center;
+
+    padding: 17px 5px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+
+    animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lap-number {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.lap-time {
+    font-family: "Space Mono", monospace;
+    font-size: 15px;
+}
+
+.lap-total {
+    text-align: right;
+
+    color: var(--muted);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 12px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 45px 10px;
+    color: var(--muted);
+}
+
+.empty-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    opacity: 0.6;
+}
+
+.empty-state p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #b0b2ba;
+}
+
+.empty-state small {
+    font-size: 11px;
+}
+
+
+/* ---------------- FOOTER ---------------- */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 22px;
+
+    color: #4e5059;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+
+/* ---------------- SCROLLBAR ---------------- */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #30323a;
+    border-radius: 10px;
+}
+
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width: 600px) {
+
+    .app {
+        padding-top: 25px;
+    }
+
+    .header h1 {
+        font-size: 27px;
+    }
+
+    .status {
+        padding: 8px 10px;
+    }
+
+    .stopwatch-card {
+        padding: 40px 18px;
+    }
+
+    .timer {
+        font-size: 39px;
+        letter-spacing: 1px;
+    }
+
+    .timer-info {
+        gap: 13px;
+        font-size: 6px;
+    }
+
+    .controls {
+        gap: 8px;
+        margin-top: 35px;
+    }
+
+    .btn {
+        min-width: 105px;
+        padding: 12px 10px;
+        font-size: 10px;
+    }
+
+    .laps-card {
+        padding: 20px;
+    }
+
+    .lap-row {
+        grid-template-columns: 50px 1fr 1fr;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 7px;
+        text-align: center;
+    }
+}
